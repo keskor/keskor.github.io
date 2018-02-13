@@ -3,49 +3,24 @@
 	<head>
 		<title>ArcMapJavaScript</title>
 		<link rel="stylesheet" type="text/css" media="all" href="styles/main.css" />
-						
+		<link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+		
+		<script src="	">
+		<script src="https://js.arcgis.com/4.6/"></script>		
 	
 	</head>
 	
 	<body>
 <!--Title-->
-<h1>ArcMapJavaScript</h1>
-<h2>By Jacob Olsen</h2>
-<h3>2/12/2018</h3>
+		<div id="menu" class="container">
+			<h1>ArcMapJavaScript</h1>
+			<h2>By Jacob Olsen</h2>
+			<h3>2/12/2018</h3>
+		</div>
 
-	
-	
-  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
-  <script src="https://js.arcgis.com/4.6/"></script>
   
+		<script src="script/body.js"></script>
   
-  <script>
-    require([
-      "esri/Map",
-      "esri/views/MapView",
-      "dojo/domReady!"
-    ], function(Map, MapView) {
-
-      var map = new Map({
-        basemap: "streets"
-      });
-	  
-	  var utah_dem_layer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/Elevations/MapServer"});
-	  
-	  var utah_shp_layer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/SpeedLimit/MapServer"});
-	  
-	  map.layers.add(utah_dem_layer);
-	  map.layers.add(utah_shp_layer);
-
-      var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        zoom: 6,
-        center: [-111.1, 39.1] // longitude, latitude
-      });
-
-    });
-  </script>
   
 	</body>
 	
