@@ -1,8 +1,9 @@
 require([
       "esri/Map",
+	  "esri/layers/MapImageLayer",
       "esri/views/MapView",
       "dojo/domReady!"
-    ], function(Map, MapView) {
+    ], function(Map, MapImageLayer, MapView) {
 
       var map = new Map({
         basemap: "streets"
