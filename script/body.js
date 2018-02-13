@@ -16,8 +16,8 @@ require([
 	  map.layers.add(utah_shp_layer);
 
       var view = new MapView({
-        container: "viewDiv",
         map: map,
+		container: "viewDiv",
         zoom: 6,
         center: [-111.1, 39.1] // longitude, latitude
       });
