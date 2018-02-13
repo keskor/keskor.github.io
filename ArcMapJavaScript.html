@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ArcMapJavaScript</title>
+		<style>
+			body {background-color: powderblue;}
+			h1   {color: black;
+						font-family: optima;
+						font-size: 50px;
+						font-style: normal;
+						font-variant: normal;
+						font-weight: 500;
+						line-height: 26.4px;
+						align-content: center;
+				}
+			p    {color: black;}
+			#navigation li {
+						list-style: none;
+						display: block;
+					    float: left;
+						margin: 0em;
+						}
+			#navigation li a {
+						text-shadow: 0 2px 1px rgba(0,0,0,0.5);
+						display: block;
+						text-decoration: none;
+						color: #f0f0f0;
+						font-size: 1.6em;
+						margin: 0 .5em;
+						}
+			#navigation li a:hover {
+						margin-top: 2px;
+        				}
+			#navigation_container {
+						margin: 0 auto;
+						width: 960px;
+						}
+			.rectangle {
+						background: #64b5f6;
+						height: 62px;
+						width: 100%;   	
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+						box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+						-webkit-border-radius: 3px;
+						-moz-border-radius: 3px;
+						border-radius: 3px;
+						z-index: 500; /* the stack order: foreground */
+						margin: 3em 0;
+									}
+			.rectangleh1 {
+						background: #64b5f6;
+						height: 95px;
+						width: 100%;
+						top: 0;
+						left: 0;
+						position: absolute;
+						-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+						box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+						-webkit-border-radius: 3px;
+						-moz-border-radius: 3px;
+						border-radius: 3px;
+						z-index: 500; /* the stack order: foreground */
+						}
+			.bg {/* The image used */
+								background-image: url("https://snazzy-maps-cdn.azureedge.net/assets/1243-xxxxxxxxxxx.png?v=20170626083204");
+
+/* Full height */
+						height: 100%; 
+
+/* Center and scale the image nicely */
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: cover;
+									}
+			.popup {
+						position: absolute;
+						bottom: 0;
+						display: inline-block;
+						cursor: pointer;
+						}
+/* The actual popup (appears on top) */
+			.popup .popuptext {
+						visibility: hidden;
+						width: 500px;
+						background-color: #555;
+						color: #64b5f6;
+						border-radius: 6px;
+						padding: 8px 0;
+						position: absolute;
+						z-index: 1;
+						bottom: 50%;
+						left: 50%;
+						margin-left: -80px;
+						}
+
+/* Popup arrow */
+			.popup .popuptext::after {
+						content: "";
+						position: absolute;
+						top: 100%;
+						left: 50%;
+						margin-left: -5px;
+						border-width: 5px;
+						border-style: solid;
+						border-color: #555 transparent transparent transparent;
+						}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+			.popup .show {
+						visibility: visible;
+						-webkit-animation: fadeIn 1s;
+						animation: fadeIn 1s
+						}
+
+/* Add animation (fade in the popup) */
+			@-webkit-keyframes fadeIn {
+						from {opacity: 0;} 
+						to {opacity: 1;}
+						}
+
+			@keyframes fadeIn {
+						from {opacity: 0;}
+						to {opacity:1 ;}
+						}
+						
+		</style>
+	</head>
+	
+	<body>
+<!--Title-->
+<h1>ArcMapJavaScript</h1>
+<h2>By Jacob Olsen</h2>
+<h3>2/12/2018</h3>
+
+	
+	
+  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.6/"></script>
+  
+  
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "dojo/domReady!"
+    ], function(Map, MapView) {
+
+      var map = new Map({
+        basemap: "streets"
+      });
+	  
+	  var utah_dem_layer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/Elevations/MapServer"});
+	  
+	  var utah_shp_layer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/SpeedLimit/MapServer"});
+	  
+	  map.layers.add(utah_dem_layer);
+	  map.layers.add(utah_shp_layer);
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 6,
+        center: [-111.1, 39.1] // longitude, latitude
+      });
+
+    });
+  </script>
+  
+	</body>
+	
+	
+</html>
