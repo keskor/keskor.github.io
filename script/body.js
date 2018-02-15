@@ -15,7 +15,7 @@ require([
 	  
 	  var utah_dem_layer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/Elevations/MapServer"});
 	  
-	  var speedlimitlayer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/SpeedLimit/MapServer"});
+	  var speedlimitlayer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/MyMapService/MapServer"});
 	  
 	  map.layers.add(utah_dem_layer);
 	  map.layers.add(speedlimitlayer);
@@ -46,7 +46,7 @@ require([
 	  	// Reference the popupTemplate instance in the
 		// popupTemplate property of FeatureLayer
 	  var featureLayer = new FeatureLayer({
-        url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/SpeedLimit/MapServer/0",
+        url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/MyMapService/FeatureServer",
         outFields: ["*"],
         popupTemplate: popup
 		});
