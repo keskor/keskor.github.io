@@ -1,12 +1,12 @@
 require([
       "esri/Map",
 	  "esri/layers/MapImageLayer",
-	  //"esri/layers/FeatureLayer",
+	  "esri/layers/FeatureLayer",
       "esri/views/MapView",
 	  "dojo/dom",  // require dojo/dom for getting the DOM element
 	  "dojo/on",   // require dojo/on for listening to events on the DOM
       "dojo/domReady!"
-    ], function(Map, /*FeatureLayer,*/ MapImageLayer, MapView, dom, on) {
+    ], function(Map, MapImageLayer, FeatureLayer, MapView, dom, on) {
 
 	//Create the Map
       var map = new Map({
@@ -15,10 +15,10 @@ require([
 	  
 	  var utah_dem_layer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/Elevations/MapServer"});
 	  
-	  var speedlimitlayer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/MyMapService/MapServer"});
+	  //var speedlimitlayer = new MapImageLayer({url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/MyMapService/MapServer"});
 	  
 	  map.layers.add(utah_dem_layer);
-	  map.layers.add(speedlimitlayer);
+	  //map.layers.add(speedlimitlayer);
 
 	  //Create the Map View
       var view = new MapView({
@@ -28,7 +28,7 @@ require([
         center: [-111.1, 39.1] // longitude, latitude
       });
 
-	  /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	  //The Popup
 	  var popup = { // autocasts as new PopupTemplate()
         title: "Information about the road: {Name}",
@@ -46,13 +46,13 @@ require([
 	  	// Reference the popupTemplate instance in the
 		// popupTemplate property of FeatureLayer
 	  var featureLayer = new FeatureLayer({
-        url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/MyMapService/FeatureServer",
+        url: "http://geoserver2.byu.edu/arcgis/rest/services/Valor/MyMapService/FeatureServer/0",
         outFields: ["*"],
         popupTemplate: popup
 		});
 		map.add(featureLayer);
 	  
-	  *////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	  	// Create a variable referencing the checkbox node for Utah DEM
       var demLayerToggle = dom.byId("dem");
 	    
@@ -63,13 +63,14 @@ require([
 		});
 		
 		// Create a variable referencing the checkbox node for Utah SpeedLimit
-	  var speedlimiLyrToggle = dom.byId("speedlimit");
+	  /*var speedlimiLyrToggle = dom.byId("speedlimit");
 	  
 		// Listen to the onchange event for the checkbox
 		on(speedlimiLyrToggle, "change", function(){
 		// When the checkbox is checked (true), set the layer's visibility to true
 		speedlimitlayer.visible = speedlimiLyrToggle.checked;
 		});
+		*/
 
 	  
     });
